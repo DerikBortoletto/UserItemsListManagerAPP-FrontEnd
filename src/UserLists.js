@@ -13,7 +13,7 @@ export default class UserLists extends Component{
                 "Content-type": "application/json"
             }
         }
-        config.headers["Authorization"] = "Token bd1084beede7a0c0f8db404527ac7daa7d1a1c69"
+        config.headers["Authorization"] = 'Token ' + localStorage.getItem('token');
 
         var url = "http://localhost:8000/list/";
         const response = await fetch(url, config);
@@ -26,9 +26,9 @@ export default class UserLists extends Component{
     {
 
         const listsApi = this.state.lists;
-        var token = '';
+        var token = localStorage.getItem('token');
 
-        if(token==='')
+        if(!token)
             {
                 return <LoginComponent />
             }

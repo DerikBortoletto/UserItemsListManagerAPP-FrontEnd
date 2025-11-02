@@ -12,7 +12,15 @@ export default class LoginComponent extends Component {
   };
  
   handleSubmit = (e) => {
-    alert('A name was submitted: ' + this.state.username + ' Password: ' + this.state.password);
+    var url = 'http://localhost:8000/api-token-auth/';
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: this.state.username, password: this.state.password })
+    };
+    fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(data => localStorage.setItem('token', data.token));
     e.preventDefault();
     
   };
