@@ -12,7 +12,7 @@ export default class UserLists extends Component{
                 "Content-type": "application/json"
             }
         }
-        config.headers["Authorization"] = "Token 79395728c39511654a037e9fa10838884ed15fb5"
+        config.headers["Authorization"] = "Token bd1084beede7a0c0f8db404527ac7daa7d1a1c69"
 
         var url = "http://localhost:8000/list/";
         const response = await fetch(url, config);
