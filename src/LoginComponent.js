@@ -57,7 +57,7 @@ export default class LoginComponent extends Component {
             <label />
             <input
             type="submit"
-            value="Submit"
+            value="Login"
             onChange={this.handleSubmit}
             placeholder="Enviar"
             />
