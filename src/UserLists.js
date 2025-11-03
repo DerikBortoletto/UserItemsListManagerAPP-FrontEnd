@@ -14,7 +14,7 @@ export default class UserLists extends Component{
         }
         config.headers["Authorization"] = 'Token ' + localStorage.getItem('token');
 
-        var url = "http://localhost:8000/list/";
+        var url = "http://3.21.162.220:8000/list/";
         const response = await fetch(url, config);
         const data = await response.json();
         console.log(data)
