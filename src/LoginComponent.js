@@ -29,6 +29,11 @@ export default class LoginComponent extends Component {
     
   };
 
+  logout (){
+    localStorage.removeItem('token');
+    this.setState({token: null})
+  }
+
   render() {
     
     const { username, password } = this.state;
@@ -59,7 +64,12 @@ export default class LoginComponent extends Component {
         </form>
         );
     else
-        return <UserLists />
+        return (
+            <div>
+                <UserLists />
+                <button onClick={() => this.logout()}>Logout</button>
+            </div>
+        )
 
   }
 }
