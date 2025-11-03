@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import UserLists from "./UserLists";
 
 export default class LoginComponent extends Component {
   state = { username: "", password: "" }; // não precisa de constructor
@@ -20,34 +21,45 @@ export default class LoginComponent extends Component {
     };
     fetch(url, requestOptions)
         .then(response => response.json())
-        .then(data => localStorage.setItem('token', data.token));
+        .then(data => {
+            localStorage.setItem('token', data.token)
+            this.setState({token: data.token});
+        });
     e.preventDefault();
     
   };
 
   render() {
+    
     const { username, password } = this.state;
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={username}
-          onChange={this.handleChange}
-          placeholder="Usuário"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={this.handleChangePassword}
-          placeholder="Senha"
-        />
-        <input
-          type="submit"
-          value="Submit"
-          onChange={this.handleSubmit}
-          placeholder="Enviar"
-        />
-      </form>
-    );
+    var token = localStorage.getItem('token');
+
+    if(!token)
+        return (
+        <form onSubmit={this.handleSubmit}>
+            <input
+            type="text"
+            value={username}
+            onChange={this.handleChange}
+            placeholder="Usuário"
+            />
+            <input
+            type="password"
+            value={password}
+            onChange={this.handleChangePassword}
+            placeholder="Senha"
+            />
+            <label />
+            <input
+            type="submit"
+            value="Submit"
+            onChange={this.handleSubmit}
+            placeholder="Enviar"
+            />
+        </form>
+        );
+    else
+        return <UserLists />
+
   }
 }
