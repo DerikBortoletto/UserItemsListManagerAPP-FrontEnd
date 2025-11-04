@@ -13,7 +13,7 @@ export default class LoginComponent extends Component {
   };
  
   handleSubmit = (e) => {
-    var url = 'http://localhost:8000/api-token-auth/';
+    var url = 'http://3.21.162.220:8000/api-token-auth/';
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
